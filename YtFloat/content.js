@@ -44,28 +44,23 @@ function hideSuggestions() {
 async function fetchSuggestions(query) {
   if (!query.trim()) { hideSuggestions(); return; }
   try {
-    const url = `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${encodeURIComponent(query)}`;
-    const res = await fetch(url);
+    const res = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${encodeURIComponent(query)}`);
     const data = await res.json();
     const items = data[1].slice(0, 8);
     if (!items.length) { hideSuggestions(); return; }
-
     suggestions.innerHTML = items.map((s, i) =>
-      `<div class="yt-suggest-item" data-index="${i}" data-value="${s.replace(/"/g, '&quot;')}">
+      `<div class="yt-suggest-item" data-index="${i}" data-value="${s.replace(/"/g,'&quot;')}">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <span>${s}</span>
       </div>`
     ).join('');
     suggestions.classList.add('visible');
     selectedIndex = -1;
-
     suggestions.querySelectorAll('.yt-suggest-item').forEach(el => {
       el.addEventListener('mousedown', e => { e.preventDefault(); doSearch(el.dataset.value); });
       el.addEventListener('mouseover', () => { selectedIndex = parseInt(el.dataset.index); updateSelected(); });
     });
-  } catch(e) {
-    hideSuggestions();
-  }
+  } catch(e) { hideSuggestions(); }
 }
 
 function updateSelected() {

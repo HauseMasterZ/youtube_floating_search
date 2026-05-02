@@ -4,8 +4,11 @@ ytd-app { --ytd-masthead-height: 0px !important; }
 
 #yt-hover-zone {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 80px;
   z-index: 99998;
 }
 
@@ -18,11 +21,13 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #1a1a1a;
-  border: 1px solid #3a3a3a;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 26px;
   padding: 6px 10px 6px 12px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease;
@@ -45,7 +50,7 @@ ytd-app { --ytd-masthead-height: 0px !important; }
 #yt-divider {
   width: 1px;
   height: 18px;
-  background: #3a3a3a;
+  background: rgba(255,255,255,0.2);
   flex-shrink: 0;
 }
 
@@ -64,7 +69,7 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   font-size: 14px;
   font-family: sans-serif;
 }
-#yt-float-input::placeholder { color: #666; }
+#yt-float-input::placeholder { color: rgba(255,255,255,0.4); }
 
 #yt-suggestions {
   display: none;
@@ -72,11 +77,13 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   top: calc(100% + 14px);
   left: -60px;
   width: 360px;
-  background: #1a1a1a;
-  border: 1px solid #3a3a3a;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
 }
 
 #yt-suggestions.visible { display: block; }
@@ -86,7 +93,7 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   align-items: center;
   gap: 10px;
   padding: 9px 16px;
-  color: #ccc;
+  color: rgba(255,255,255,0.75);
   font-size: 13px;
   font-family: sans-serif;
   cursor: pointer;
@@ -94,7 +101,7 @@ ytd-app { --ytd-masthead-height: 0px !important; }
 }
 .yt-suggest-item:hover,
 .yt-suggest-item.selected {
-  background: #2a2a2a;
+  background: rgba(255,255,255,0.08);
   color: #fff;
 }
 .yt-suggest-item span {
@@ -104,7 +111,7 @@ ytd-app { --ytd-masthead-height: 0px !important; }
 }
 
 #yt-float-btn {
-  background: #ff0000;
+  background: rgba(255, 0, 0, 0.85);
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -117,4 +124,4 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   flex-shrink: 0;
   transition: background 150ms ease;
 }
-#yt-float-btn:hover { background: #cc0000; }
+#yt-float-btn:hover { background: rgba(204, 0, 0, 0.95); }
