@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Floating Search",
+  "version": "1.0",
+  "description": "Adds a floating search bar to YouTube when the header is hidden",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_end"
+    }
+  ]
+}
