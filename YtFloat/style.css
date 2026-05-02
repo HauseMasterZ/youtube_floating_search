@@ -4,124 +4,127 @@ ytd-app { --ytd-masthead-height: 0px !important; }
 
 #yt-hover-zone {
   position: fixed;
-  top: 0;
-  left: 50%;
+  top: 0; left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 80px;
+  width: 400px; height: 80px;
   z-index: 99998;
 }
 
 #yt-float-bar {
   position: fixed;
-  top: 8px;
-  left: 50%;
+  top: 8px; left: 50%;
   transform: translateX(-50%);
   z-index: 99999;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 26px;
-  padding: 6px 10px 6px 12px;
+  padding: 6px 8px 6px 12px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease;
 }
-
-#yt-float-bar.visible {
-  opacity: 1;
-  pointer-events: all;
-}
+#yt-float-bar.visible { opacity: 1; pointer-events: all; }
 
 #yt-logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  opacity: 0.9;
-  transition: opacity 150ms ease;
+  display: flex; align-items: center; flex-shrink: 0;
+  opacity: 0.75; transition: opacity 150ms ease;
 }
 #yt-logo:hover { opacity: 1; }
 
-#yt-divider {
-  width: 1px;
-  height: 18px;
+#yt-divider, #yt-divider2 {
+  width: 1px; height: 18px;
   background: rgba(255,255,255,0.2);
   flex-shrink: 0;
 }
 
-#yt-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
+#yt-input-wrap { position: static; display: flex; align-items: center; }
 
 #yt-float-input {
-  width: 280px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 14px;
-  font-family: sans-serif;
+  width: 260px; background: transparent;
+  border: none; outline: none;
+  color: #fff; font-size: 14px; font-family: sans-serif;
 }
 #yt-float-input::placeholder { color: rgba(255,255,255,0.4); }
 
 #yt-suggestions {
   display: none;
   position: absolute;
-  top: calc(100% + 14px);
-  left: -60px;
-  width: 360px;
-  background: rgba(18, 18, 18, 0.75);
+  top: calc(100% + 3px); left: 0; right: 0;
+  width: auto;
+  background: rgba(18,18,18,0.75);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 14px;
-  overflow: hidden;
+  border-radius: 14px; overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,0.6);
 }
-
 #yt-suggestions.visible { display: block; }
 
 .yt-suggest-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   padding: 9px 16px;
   color: rgba(255,255,255,0.75);
-  font-size: 13px;
-  font-family: sans-serif;
-  cursor: pointer;
-  transition: background 100ms ease;
+  font-size: 13px; font-family: sans-serif;
+  cursor: pointer; transition: background 100ms ease;
 }
 .yt-suggest-item:hover,
-.yt-suggest-item.selected {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-}
-.yt-suggest-item span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.yt-suggest-item.selected { background: rgba(255,255,255,0.08); color: #fff; }
+.yt-suggest-item span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+/* Minimalist search button — no background */
 #yt-float-btn {
-  background: rgba(255, 0, 0, 0.85);
+  background: transparent;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  color: white;
+  width: 30px; height: 30px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; padding: 0;
   transition: background 150ms ease;
 }
-#yt-float-btn:hover { background: rgba(204, 0, 0, 0.95); }
+#yt-float-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* Profile */
+#yt-profile-wrap { position: relative; display: flex; align-items: center; }
+
+#yt-profile-btn {
+  background: transparent; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%;
+  transition: background 150ms ease; padding: 0;
+}
+#yt-profile-btn:hover { background: rgba(255,255,255,0.12); }
+
+#yt-profile-menu {
+  display: none;
+  position: absolute; top: calc(100% + 12px); right: 0;
+  width: 240px;
+  background: rgba(22,22,22,0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  padding: 6px 0;
+}
+#yt-profile-menu.visible { display: block; }
+
+.yt-menu-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px;
+  color: rgba(255,255,255,0.8);
+  font-size: 13px; font-family: sans-serif;
+  text-decoration: none;
+  transition: background 100ms ease; cursor: pointer;
+}
+.yt-menu-item svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.7; }
+.yt-menu-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.yt-menu-item:hover svg { opacity: 1; }
+
+.yt-menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
