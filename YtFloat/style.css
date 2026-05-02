@@ -49,6 +49,12 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   flex-shrink: 0;
 }
 
+#yt-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 #yt-float-input {
   width: 280px;
   background: transparent;
@@ -59,6 +65,43 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   font-family: sans-serif;
 }
 #yt-float-input::placeholder { color: #666; }
+
+#yt-suggestions {
+  display: none;
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -60px;
+  width: 360px;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+}
+
+#yt-suggestions.visible { display: block; }
+
+.yt-suggest-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  color: #ccc;
+  font-size: 13px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+.yt-suggest-item:hover,
+.yt-suggest-item.selected {
+  background: #2a2a2a;
+  color: #fff;
+}
+.yt-suggest-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 #yt-float-btn {
   background: #ff0000;

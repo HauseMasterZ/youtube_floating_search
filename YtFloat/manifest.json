@@ -1,8 +1,24 @@
 {
   "manifest_version": 3,
   "name": "YouTube Floating Search",
-  "version": "1.0",
-  "description": "Adds a floating search bar to YouTube when the header is hidden",
+  "version": "1.1",
+  "description": "Hides the YouTube header and adds a hover-reveal floating search bar",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "YouTube Floating Search"
+  },
+  "host_permissions": [
+    "https://suggestqueries.google.com/*"
+  ],
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
