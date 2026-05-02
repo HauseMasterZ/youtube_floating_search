@@ -1,0 +1,77 @@
+#masthead-container { display: none !important; }
+ytd-app { --ytd-masthead-height: 0px !important; }
+#content.ytd-app { margin-top: 0px !important; padding-top: 0px !important; }
+
+#yt-hover-zone {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100px;
+  z-index: 99998;
+}
+
+#yt-float-bar {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 26px;
+  padding: 6px 10px 6px 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+#yt-float-bar.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#yt-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 150ms ease;
+}
+#yt-logo:hover { opacity: 1; }
+
+#yt-divider {
+  width: 1px;
+  height: 18px;
+  background: #3a3a3a;
+  flex-shrink: 0;
+}
+
+#yt-float-input {
+  width: 280px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+#yt-float-input::placeholder { color: #666; }
+
+#yt-float-btn {
+  background: #ff0000;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 150ms ease;
+}
+#yt-float-btn:hover { background: #cc0000; }
