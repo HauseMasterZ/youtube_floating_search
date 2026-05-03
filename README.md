@@ -1,6 +1,7 @@
 # YouTube Floating Search
 
 A lightweight Chrome/Chromium extension that hides the YouTube header and replaces it with a minimal hover-reveal floating search bar.
+<img width="910" height="333" alt="image" src="https://github.com/user-attachments/assets/64ac9b85-b3c0-46a5-a5be-04761aa545a6" />
 
 ## Features
 
