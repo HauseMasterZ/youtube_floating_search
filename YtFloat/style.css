@@ -1,3 +1,34 @@
+/* Mobile YouTube (m.youtube.com) */
+.mobile-topbar-header { display: none !important; }
+ytm-mobile-topbar-renderer { display: none !important; }
+ytm-app,
+ytm-app.sticky-player { padding-top: 0 !important; margin-top: 0 !important; top: 0 !important; }
+
+ytm-single-column-watch-next-renderer,
+ytm-single-column-watch-next-results-renderer,
+ytm-browse,
+ytm-search,
+ytm-watch { margin-top: 0 !important; padding-top: 0 !important; top: 0 !important; }
+
+/* The sticky player wrapper reserves topbar height */
+[sticky-player-offset],
+.player-sticky-sentinel,
+ytm-app[has-masthead] { padding-top: 0 !important; }
+
+/* Remove any CSS var-based topbar offset */
+:root { --ytm-topbar-height: 0px !important; }
+
+/* Force sticky player to top:0 */
+#player-container-id,
+.player-container.sticky-player { top: 0 !important; }
+
+/* Category chip bar sticks below topbar — reset to top:0 */
+ytm-chip-cloud-renderer,
+.chip-bar,
+ytm-feed-filter-chip-bar-renderer,
+ytm-related-chip-cloud-renderer,
+ytm-related-chip-cloud-renderer.chips-fixed-positioning { top: 0 !important; }
+
 #masthead-container { display: none !important; }
 ytd-app { --ytd-masthead-height: 0px !important; }
 #content.ytd-app { margin-top: 0px !important; padding-top: 0px !important; }
@@ -8,6 +39,10 @@ ytd-app { --ytd-masthead-height: 0px !important; }
   transform: translateX(-50%);
   width: 400px; height: 80px;
   z-index: 99998;
+}
+
+@media (max-width: 768px) {
+  #yt-hover-zone { height: 30px; }
 }
 
 #yt-float-bar {
@@ -54,15 +89,17 @@ ytd-app { --ytd-masthead-height: 0px !important; }
 
 #yt-suggestions {
   display: none;
-  position: absolute;
-  top: calc(100% + 3px); left: 0; right: 0;
-  width: auto;
-  background: rgba(18,18,18,0.75);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.1);
+  position: fixed;
+  top: 54px; left: 50%;
+  transform: translateX(-50%);
+  width: 360px; /* overridden by JS to match bar width */
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 14px; overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  z-index: 99999;
 }
 #yt-suggestions.visible { display: block; }
 
