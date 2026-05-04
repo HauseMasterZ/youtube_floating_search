@@ -120,7 +120,6 @@ const inject = () => {
 
   const p = new URLSearchParams(location.search).get('search_query');
   if (p) input.value = p;
-
   const showBar = () => { clearTimeout(hideTimeout); bar.classList.add('visible'); };
   const schedHide = () => {
     hideTimeout = setTimeout(() => {
@@ -128,10 +127,8 @@ const inject = () => {
     }, 300);
   };
 
-  zone.addEventListener('mouseenter', showBar, { passive: true });
-  zone.addEventListener('mouseleave', schedHide, { passive: true });
-  bar.addEventListener('mouseenter', showBar, { passive: true });
-  bar.addEventListener('mouseleave', schedHide, { passive: true });
+  wrapper.addEventListener('mouseenter', showBar, { passive: true });
+  wrapper.addEventListener('mouseleave', schedHide, { passive: true });
   input.addEventListener('focus', () => { showBar(); if (input.value.trim()) { lastQuery = ''; fetchSugg(input.value); } });
   input.addEventListener('blur', schedHide);
 
