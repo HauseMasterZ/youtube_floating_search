@@ -66,7 +66,7 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
 #yt-suggestions {
   display: none;
   position: relative;
-  top: 3px;
+  top: 2px;
   width: 100%;
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
