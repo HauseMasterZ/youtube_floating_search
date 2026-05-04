@@ -23,6 +23,9 @@ const inject = () => {
       document.documentElement.style.setProperty('--ytm-topbar-height', '0px', 'important');
       const player = document.querySelector('#player-container-id, .player-container.sticky-player');
       if (player) player.style.setProperty('top', '0', 'important');
+      document.querySelectorAll('ytm-chip-cloud-renderer.chip-bar').forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+      });
     };
     applyFix();
     new MutationObserver(applyFix).observe(document.body, { childList: true, subtree: false });
@@ -140,6 +143,16 @@ const inject = () => {
       input.blur();
     }
   });
+
+  if (window.matchMedia('(hover: none)').matches) {
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < lastScrollY && y > 0) showBar();
+      else schedHide();
+      lastScrollY = y;
+    }, { passive: true });
+  }
 };
 
 'requestIdleCallback' in window

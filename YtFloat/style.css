@@ -20,9 +20,6 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
   z-index: 99998;
   pointer-events: all;
 }
-@media (max-width: 768px) {
-  #yt-hover-zone { height: 30px; }
-}
 
 #yt-float-wrapper {
   position: fixed;
@@ -135,3 +132,8 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
 .yt-menu-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
 .yt-menu-item:hover svg { opacity: 1; }
 .yt-menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+@media (max-width: 768px) {
+  #yt-hover-zone { height: 40px; };
+
+}
