@@ -49,6 +49,8 @@ const inject = () => {
 
   profileBtn.addEventListener('click', e => {
     e.stopPropagation();
+    hideSugg();
+    input.blur();
     menuOpen = !menuOpen;
     profileMenu.classList.toggle('visible', menuOpen);
   });
