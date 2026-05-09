@@ -31,7 +31,6 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
   flex-direction: column;
   align-items: stretch;
   width: max-content;
-
 }
 
 #yt-float-bar {
