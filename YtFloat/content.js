@@ -20,11 +20,11 @@ const inject = () => {
 
   if (location.hostname === 'm.youtube.com') {
     const applyFix = () => {
-      document.documentElement.style.setProperty('--ytm-topbar-height', '0px', 'important');
-      const player = document.querySelector('#player-container-id, .player-container.sticky-player');
-      if (player) player.style.setProperty('top', '0', 'important');
       document.querySelectorAll('ytm-chip-cloud-renderer.chip-bar').forEach(el => {
         el.style.setProperty('display', 'none', 'important');
+      });
+      document.querySelectorAll('div.rich-grid-renderer-header.rich-grid-sticky-header').forEach(el => {
+      el.style.setProperty('display', 'none', 'important');
       });
     };
     applyFix();
