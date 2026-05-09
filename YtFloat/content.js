@@ -120,15 +120,20 @@ const inject = () => {
 
   const p = new URLSearchParams(location.search).get('search_query');
   if (p) input.value = p;
-  const showBar = () => { clearTimeout(hideTimeout); bar.classList.add('visible'); };
+  const showBar = () => { clearTimeout(hideTimeout); bar.classList.add('visible'); wrapper.classList.add('bar-visible'); };
   const schedHide = () => {
     hideTimeout = setTimeout(() => {
-      if (document.activeElement !== input && !menuOpen) { bar.classList.remove('visible'); hideSugg(); }
+      if (document.activeElement !== input && !menuOpen) { bar.classList.remove('visible'); wrapper.classList.remove('bar-visible'); hideSugg(); }
     }, 300);
   };
 
-  wrapper.addEventListener('mouseenter', showBar, { passive: true });
-  wrapper.addEventListener('mouseleave', schedHide, { passive: true });
+
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hasHover) {
+    wrapper.addEventListener('mouseenter', showBar, { passive: true });
+    wrapper.addEventListener('mouseleave', schedHide, { passive: true });
+  }
   input.addEventListener('focus', () => { showBar(); if (input.value.trim()) { lastQuery = ''; fetchSugg(input.value); } });
   input.addEventListener('blur', schedHide);
 
@@ -143,12 +148,19 @@ const inject = () => {
     }
   });
 
-  if (window.matchMedia('(hover: none)').matches) {
+  if (!hasHover) {
+    const forceHide = () => {
+      clearTimeout(hideTimeout);
+      input.blur();
+      bar.classList.remove('visible');
+      wrapper.classList.remove('bar-visible');
+      hideSugg();
+    };
     let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       if (y < lastScrollY && y > 0) showBar();
-      else schedHide();
+      else forceHide();
       lastScrollY = y;
     }, { passive: true });
   }
