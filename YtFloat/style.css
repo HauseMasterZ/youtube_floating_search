@@ -12,6 +12,10 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
 #player-container-id,
 .player-container.sticky-player { top: 0 !important; }
 
+.rich-grid-renderer-header rich-grid-sticky-header{
+display: none;
+}
+
 #yt-hover-zone {
   position: fixed;
   top: 0; left: 50%;

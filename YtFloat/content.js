@@ -26,6 +26,15 @@ const inject = () => {
       document.querySelectorAll('ytm-chip-cloud-renderer.chip-bar').forEach(el => {
         el.style.setProperty('display', 'none', 'important');
       });
+      document.querySelectorAll('ytm-feed-filter-chip-bar-renderer.chip-bar').forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+      });
+      document.querySelectorAll('ytm-mobile-topbar-renderer').forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+      });
+      document.querySelectorAll('div.rich-grid-renderer-header.rich-grid-sticky-header').forEach(el => {
+      el.style.setProperty('display', 'none', 'important');
+      });
     };
     applyFix();
     new MutationObserver(applyFix).observe(document.body, { childList: true, subtree: false });
