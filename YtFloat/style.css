@@ -134,8 +134,9 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
 .yt-menu-item:hover svg { opacity: 1; }
 .yt-menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
 
-@media (max-width: 768px) {
-  #yt-hover-zone { height: 1px; };
+@media (hover: none) {
+  #yt-hover-zone { height: 1px; }
   #yt-float-wrapper { pointer-events: none; }
   #yt-float-wrapper.bar-visible { pointer-events: auto; }
 }
+
