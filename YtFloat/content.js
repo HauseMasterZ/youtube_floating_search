@@ -69,7 +69,7 @@ const inject = () => {
       if (!items.length) { hideSugg(); return; }
       sugg.innerHTML = items.map(s =>
         `<div class="yt-suggest-item" data-v="${s.replace(/"/g, '&quot;')}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <span style="max-width: ${(input.offsetWidth*1.2)}px">
+          <span style="max-width: ${(input.offsetWidth * 1.2)}px">
             ${s}
           </span>
         </div>`
@@ -94,10 +94,10 @@ const inject = () => {
   });
 
   input.addEventListener('keydown', e => {
-    if      (e.key === 'ArrowDown') { e.preventDefault(); selIdx = Math.min(selIdx+1, suggItems.length-1); updateSel(); }
-    else if (e.key === 'ArrowUp')   { e.preventDefault(); selIdx = Math.max(selIdx-1, -1); updateSel(); }
-    else if (e.key === 'Enter')     { hideSugg(); doSearch(); }
-    else if (e.key === 'Escape')    { hideSugg(); bar.classList.remove('visible'); input.blur(); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); selIdx = Math.min(selIdx + 1, suggItems.length - 1); updateSel(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); selIdx = Math.max(selIdx - 1, -1); updateSel(); }
+    else if (e.key === 'Enter') { hideSugg(); doSearch(); }
+    else if (e.key === 'Escape') { hideSugg(); bar.classList.remove('visible'); input.blur(); }
   });
 
   searchBtn.addEventListener('click', () => { hideSugg(); doSearch(); });
@@ -113,7 +113,6 @@ const inject = () => {
 
 
   const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
   if (hasHover) {
     wrapper.addEventListener('mouseenter', showBar, { passive: true });
     wrapper.addEventListener('mouseleave', schedHide, { passive: true });
@@ -160,10 +159,10 @@ const inject = () => {
     let lastScrollY = window.scrollY;
     let scrollTimeout;
     const minScrollThreshold = 10;
-
+    const getScrollY = () => window.visualViewport?.pageTop ?? window.scrollY;
     const handleScroll = () => {
       clearTimeout(scrollTimeout);
-      const y = window.scrollY;
+      const y = getScrollY();
       const delta = Math.abs(y - lastScrollY);
 
       if (delta >= minScrollThreshold) {
@@ -181,6 +180,8 @@ const inject = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.visualViewport?.addEventListener('scroll', handleScroll, { passive: true });
+    window.visualViewport?.addEventListener('resize', handleScroll, { passive: true });
   }
 };
 
