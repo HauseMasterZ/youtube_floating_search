@@ -1,142 +1,362 @@
-#masthead-container { display: none !important; }
-ytd-app { --ytd-masthead-height: 0px !important; }
-#content.ytd-app { margin-top: 0 !important; padding-top: 0 !important; }
+/* Optimized CSS for maximum performance */
 
+/* Hide YouTube masthead and adjust layout */
+#masthead-container {
+  display: none !important;
+}
+
+ytd-app {
+  --ytd-masthead-height: 0px !important;
+}
+
+#content.ytd-app {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Mobile header hiding */
 .mobile-topbar-header,
-ytm-mobile-topbar-renderer { display: none !important; }
-:root { --ytm-topbar-height: 0px !important; }
-ytm-app { padding-top: 0 !important; margin-top: 0 !important; }
+ytm-mobile-topbar-renderer {
+  display: none !important;
+}
+
+:root {
+  --ytm-topbar-height: 0px !important;
+}
+
+ytm-app {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
 ytm-single-column-watch-next-renderer,
 ytm-single-column-watch-next-results-renderer,
-ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !important; }
+ytm-browse,
+ytm-search,
+ytm-watch {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 #player-container-id,
-.player-container.sticky-player { top: 0 !important; }
+.player-container.sticky-player {
+  top: 0 !important;
+}
 
-
+/* Hover zone for mobile */
 #yt-hover-zone {
   position: fixed;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 400px; height: 80px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-100%);
+  width: 50vw;
+  height: 8vh;
   z-index: 99998;
   pointer-events: all;
 }
 
+/* Main wrapper - optimized positioning */
 #yt-float-wrapper {
   position: fixed;
-  top: 8px; left: 50%;
+  top: 8px;
+  left: 50%;
   transform: translateX(-50%);
   z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: max-content;
+  /* Optimize for GPU acceleration */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
+/* Search bar - optimized animations and rendering */
 #yt-float-bar {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 26px;
   padding: 6px 8px 6px 12px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  /* Optimize opacity transitions */
   opacity: 0;
   pointer-events: none;
-  transition: opacity 180ms ease;
+  transition: opacity 180ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  /* GPU acceleration */
+  will-change: opacity;
+  transform: translateZ(0);
 }
-#yt-float-bar.visible { opacity: 1; pointer-events: all; }
 
-#yt-logo { display: flex; align-items: center; flex-shrink: 0; opacity: 0.75; transition: opacity 150ms ease; text-decoration: none; }
-#yt-logo:hover { opacity: 1; }
+#yt-float-bar.visible {
+  opacity: 1;
+  pointer-events: all;
+}
 
-#yt-divider, #yt-divider2 { width: 1px; height: 18px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+/* Logo and dividers - minimal styling */
+#yt-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity 150ms ease;
+  text-decoration: none;
+  /* Optimize hover performance */
+  will-change: opacity;
+}
 
-#yt-input-wrap { display: flex; align-items: center; }
+#yt-logo:hover {
+  opacity: 1;
+}
+
+#yt-divider,
+#yt-divider2 {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+/* Input wrapper and field */
+#yt-input-wrap {
+  display: flex;
+  align-items: center;
+}
 
 #yt-float-input {
-  width: 260px; background: transparent;
-  border: none; outline: none;
-  color: #fff; font-size: 14px; font-family: sans-serif;
+  width: 260px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+  /* Optimize text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-#yt-float-input::placeholder { color: rgba(255,255,255,0.4); }
 
+#yt-float-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Suggestions dropdown - optimized positioning */
 #yt-suggestions {
   display: none;
   position: relative;
   top: 2px;
   width: 100%;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 14px; overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  /* Optimize for GPU */
+  will-change: transform;
+  transform: translateZ(0);
 }
-#yt-suggestions.visible { display: block; }
 
+#yt-suggestions.visible {
+  display: block;
+}
+
+/* Suggestion items - optimized hover and selection */
 .yt-suggest-item {
-  display: flex; align-items: center; gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 9px 16px;
-  color: rgba(255,255,255,0.75);
-  font-size: 13px; font-family: sans-serif;
-  cursor: pointer; transition: background 100ms ease;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background-color 100ms ease, color 100ms ease;
+  /* Optimize transitions */
+  will-change: background-color, color;
 }
+
 .yt-suggest-item:hover,
-.yt-suggest-item.selected { background: rgba(255,255,255,0.08); color: #fff; }
-.yt-suggest-item span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.yt-suggest-item.selected {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
 
+.yt-suggest-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Optimize text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Search button - optimized hover */
 #yt-float-btn {
-  background: transparent; border: none; border-radius: 50%;
-  width: 30px; height: 30px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; padding: 0;
-  transition: background 150ms ease;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background-color 150ms ease;
+  /* Optimize hover performance */
+  will-change: background-color;
 }
-#yt-float-btn:hover { background: rgba(255,255,255,0.1); }
 
-#yt-profile-wrap { position: relative; display: flex; align-items: center; }
+#yt-float-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Profile section */
+#yt-profile-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 #yt-profile-btn {
-  background: transparent; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px; border-radius: 50%;
-  transition: background 150ms ease; padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background-color 150ms ease;
+  padding: 0;
+  /* Optimize hover performance */
+  will-change: background-color;
 }
-#yt-profile-btn:hover { background: rgba(255,255,255,0.12); }
 
+#yt-profile-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Profile menu - optimized positioning and animations */
 #yt-profile-menu {
   display: none;
-  position: absolute; top: calc(100% + 12px); right: 0;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
   width: 240px;
-  background: rgba(22,22,22,0.85);
+  background: rgba(22, 22, 22, 0.85);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 14px; overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
   padding: 6px 0;
+  /* Optimize for GPU */
+  will-change: transform;
+  transform: translateZ(0);
 }
-#yt-profile-menu.visible { display: block; }
 
+#yt-profile-menu.visible {
+  display: block;
+}
+
+/* Menu items - optimized hover effects */
 .yt-menu-item {
-  display: flex; align-items: center; gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 10px 16px;
-  color: rgba(255,255,255,0.8);
-  font-size: 13px; font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-family: sans-serif;
   text-decoration: none;
-  transition: background 100ms ease; cursor: pointer;
+  transition: background-color 100ms ease;
+  cursor: pointer;
+  /* Optimize transitions */
+  will-change: background-color;
 }
-.yt-menu-item svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.7; }
-.yt-menu-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
-.yt-menu-item:hover svg { opacity: 1; }
-.yt-menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
 
+.yt-menu-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 100ms ease;
+  /* Optimize icon transitions */
+  will-change: opacity;
+}
+
+.yt-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.yt-menu-item:hover svg {
+  opacity: 1;
+}
+
+.yt-menu-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4px 0;
+}
+
+/* Mobile-specific optimizations */
 @media (hover: none) {
-  #yt-hover-zone { height: 1px; }
-  #yt-float-wrapper { pointer-events: none; }
-  #yt-float-wrapper.bar-visible { pointer-events: auto; }
+  #yt-float-wrapper {
+    pointer-events: none;
+  }
+
+  #yt-float-wrapper.bar-visible {
+    pointer-events: auto;
+  }
+
+  /* Reduce motion for mobile performance */
+  #yt-float-bar {
+    transition: opacity 120ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  #yt-logo,
+  #yt-float-btn,
+  #yt-profile-btn {
+    transition: none;
+  }
+
+  .yt-suggest-item,
+  .yt-menu-item {
+    transition: none;
+  }
 }
 
+/* Performance optimizations for all devices */
+/* Reduce paint on hover for better performance */
+@media (hover: hover) and (pointer: fine) {
+
+  #yt-logo:hover,
+  #yt-float-btn:hover,
+  #yt-profile-btn:hover {
+    transition: opacity 150ms ease, background-color 150ms ease;
+  }
+}
+
+/* Optimize for high DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  #yt-float-bar {
+    border-width: 0.5px;
+  }
+
+  #yt-suggestions,
+  #yt-profile-menu {
+    border-width: 0.5px;
+  }
+}
