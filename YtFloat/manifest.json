@@ -22,16 +22,13 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://www.youtube.com/*",
-        "https://m.youtube.com/*"
-      ],
-      "js": [
-        "content.js"
-      ],
-      "css": [
-        "style.css"
-      ],
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "css": ["style.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "js": ["content.js"],
       "run_at": "document_end"
     }
   ]
