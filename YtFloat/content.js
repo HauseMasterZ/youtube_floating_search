@@ -113,7 +113,21 @@ const inject = () => {
 
 
   const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const hideDesktopChrome = () => {
+    document.querySelectorAll('ytd-feed-filter-chip-bar-renderer.style-scope.ytd-rich-grid-renderer, #frosted-glass.with-chipbar').forEach(el => {
+      if (el.style.display !== 'none') {
+        el.style.setProperty('display', 'none', 'important');
+      }
+    });
+  };
+
   if (hasHover) {
+    hideDesktopChrome();
+    const observer = new MutationObserver(() => {
+      clearTimeout(window.hideChromeTimeout);
+      window.hideChromeTimeout = setTimeout(hideDesktopChrome, 100);
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
     wrapper.addEventListener('mouseenter', showBar, { passive: true });
     wrapper.addEventListener('mouseleave', schedHide, { passive: true });
   }
@@ -158,7 +172,7 @@ const inject = () => {
     };
     let lastScrollY = window.scrollY;
     let scrollTimeout;
-    const minScrollThreshold = 10;
+    const minScrollThreshold = 1;
     const getScrollY = () => window.visualViewport?.pageTop ?? window.scrollY;
     const handleScroll = () => {
       clearTimeout(scrollTimeout);
