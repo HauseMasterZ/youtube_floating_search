@@ -16,8 +16,8 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
 #yt-hover-zone {
   position: fixed;
   top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 400px; height: 80px;
+  transform: translateX(-100%);
+  width: 50vw; height: 8vh;
   z-index: 99998;
   pointer-events: all;
 }
@@ -135,7 +135,6 @@ ytm-browse, ytm-search, ytm-watch { margin-top: 0 !important; padding-top: 0 !im
 .yt-menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
 
 @media (hover: none) {
-  #yt-hover-zone { height: 1px; }
   #yt-float-wrapper { pointer-events: none; }
   #yt-float-wrapper.bar-visible { pointer-events: auto; }
 }
