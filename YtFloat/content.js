@@ -113,21 +113,7 @@ const inject = () => {
 
 
   const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const hideDesktopChip = () => {
-    document.querySelectorAll('ytd-feed-filter-chip-bar-renderer.style-scope.ytd-rich-grid-renderer, #frosted-glass.with-chipbar, yt-related-chip-cloud-renderer.style-scope.ytd-item-section-renderer').forEach(el => {
-      if (el.style.display !== 'none') {
-        el.style.setProperty('display', 'none', 'important');
-      }
-    });
-  };
-
   if (hasHover) {
-    hideDesktopChip();
-    const observer = new MutationObserver(() => {
-      clearTimeout(window.hideChromeTimeout);
-      window.hideChromeTimeout = setTimeout(hideDesktopChip, 100);
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
     wrapper.addEventListener('mouseenter', showBar, { passive: true });
     wrapper.addEventListener('mouseleave', schedHide, { passive: true });
   }
@@ -160,9 +146,7 @@ const inject = () => {
     applyFix();
     zone.addEventListener('click', showBar, { passive: true });
     new MutationObserver(applyFix).observe(document.body, { childList: true, subtree: false });
-  }
 
-  if (!hasHover) {
     const forceHide = () => {
       clearTimeout(hideTimeout);
       input.blur();
