@@ -23,7 +23,7 @@ A lightweight Chrome/Chromium extension that hides the YouTube header and replac
 3. Enable **Developer mode** (top right toggle)
 4. Click **Load unpacked** and select the extracted folder
 5. Open YouTube — hover the top of the screen to use the search bar
-
+test
 ## Usage
 
 | Action | How |
